@@ -16,3 +16,7 @@ sisseastumi_kp date
 SELECT * FROM opilane;
 --primary Key primaarne võti mis annab unikaalsus
 --identity(1,1) määrab igaühel oma numbri
+--andmete lisamine
+INSERT INTO opilane(eesnimi, perenimi, isikukood, address, sisseastumi_kp)
+VALUES('Mohabed', 'Alfa', '20505047015', 'Addis Abeba', '2023-08-09')
+SELECT * FROM opilane;
