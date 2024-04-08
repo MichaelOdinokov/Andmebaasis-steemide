@@ -6,3 +6,4 @@ kirjed - записи
 väljad - поля
 andmed - данные
 vaäärtused - 
+Query - päring, запрос
