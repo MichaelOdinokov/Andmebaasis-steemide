@@ -1,0 +1,8 @@
+Anmebass - databse, База данных
+andmebasside haldussüsteem - система управления базами данных
+rida - ряд
+veerg - столбец
+kirjed - записи
+väljad - поля
+andmed - данные
+vaäärtused - 
