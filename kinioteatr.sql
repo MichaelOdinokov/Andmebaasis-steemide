@@ -69,33 +69,34 @@
 
 
 	--FKs
-	--FK: film->filmType
+	--FK: film->filmType done
 
 	Select * from film;
 	Select * from filmType;
 	Alter table film add foreign key (filmTypeId) references filmType(filmTypeID);
 
-	--FK: piletiMyyk-->kinokavaId
+	--FK: piletiMyyk-->kinokavaId done 
 	Alter table piletiMyyk add foreign key (kinokavaId) references kinokava(kinokavaId);
 	Select * from piletiMyyk;
 	Select * from kinokava;
 	
 	
 
-	--FK:  kinokava-->film
-	Alter table kinokava add foreign key (filmNimetus) references film(filmNimetus);
-	Select * from kinokava;
-	Select * from film;
-
-	--FK: rezisor-->film
-	Alter table Rezisor add foreign key (rezisorID) references film(rezisorID);
+	--FK: rezisor-->film done
+	Alter table film  add foreign key (rezisorID) references Rezisor(rezisorID);
 	select * from Rezisor;
 	select * from film;
 
-	--FK: zanr-->film
-	Alter table zanr add foreign key (zanrId) references film(zanrId);
+	--FK: zanr-->film done
+	Alter table film add foreign key (zanrId) references zanr(zanrId);
 	select * from zanr;
 	select * from film;
+
+	--FK:  kinokava-->film --
+	Alter table kinokava add foreign key (filmNimetus) references  film(filmNimetus);
+	select * from kinokava;
+	select * from film;
+
 
 	
 
