@@ -88,5 +88,5 @@ opilaneNimi varchar(10))
 SELECT * FROM opilaned
 
 INSERT INTO opilaned(opilaneNimi)
-VALUES ('Artemi');
+VALUES ('Michael');
 SELECT * FROM opilaned;
