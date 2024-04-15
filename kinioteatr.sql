@@ -17,8 +17,8 @@
 	eesnimi varchar(25),
 	perenimi varchar(25));
 
-	Select *from Rezisor;
-	Insert into Rezisor (rezisorId, eesnimi, perenimi)
+	Select * from Rezisor;
+	Insert into Rezisor (rezisorID, eesnimi, perenimi)
 	Values ('1', 'Mike', 'Jackson');
 
 
