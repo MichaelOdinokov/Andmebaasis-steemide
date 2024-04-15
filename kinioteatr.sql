@@ -60,11 +60,13 @@
 	Create TABLE kinokava(
 	kinokavaId int Primary Key identity (1,1),
 	kuupaev DATETIME,
-	filmNimetus int,
+	filmNimetus int
 	piletihind int,
 	);
-
-	Select * from kinokava
+	
+	select * from kinokava
+	
+	
 
 
 
@@ -93,7 +95,7 @@
 	select * from film;
 
 	--FK:  kinokava-->film --
-	Alter table kinokava add foreign key (filmNimetus) references  film(filmNimetus);
+	Alter table kinokava add foreign key (filmNimetus) references film(filmNimetus);
 	select * from kinokava;
 	select * from film;
 
