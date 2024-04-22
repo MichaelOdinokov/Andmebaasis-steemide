@@ -1,5 +1,5 @@
 CREATE DATABASE KinoteatrOdinokov;
-USE KinoteatrOdinokov1;
+USE KinoteatrOdinokov;
 
 ---Tabeli loomine zanr .
 CREATE TABLE zanr(
