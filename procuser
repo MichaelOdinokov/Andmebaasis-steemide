@@ -86,3 +86,9 @@ Begin
 End;
 
 exec kustutsFilm 42;
+
+--proceduur, mis loeb filmide arv kokku 
+create procedure FilmArv
+AS
+Select COUNT(*) as 'filmide Arv' from film;
+Exec FilmArv;
