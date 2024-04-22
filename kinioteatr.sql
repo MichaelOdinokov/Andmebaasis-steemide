@@ -71,7 +71,7 @@ CREATE TABLE film(
 	filmTypeId int,
 	reklaam image)
 INSERT INTO film (filmNimetus, pikkus, zanrId, rezisorId, filmTypeId)
-VALUES ('Kivi', 12, 1, 1, 5)
+VALUES ('Elva', 10, 1, 1, 5)
 SELECT * FROM film
 
 
