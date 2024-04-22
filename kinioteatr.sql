@@ -1,104 +1,92 @@
-	CREATE DATABASE kinoteatrOdinokov;
-	Use kinoteatrOdinokov;
+CREATE DATABASE KinoteatrOdinokov;
+USE KinoteatrOdinokov1;
 
-	--table Filmtype
-	Create TABLE filmType(
-	filmTypeID int Primary Key identity (1,1),
+---Tabeli loomine zanr .
+CREATE TABLE zanr(
+	zanrId int Primary Key identity(1,1),
+	zanrNimi varchar(25),
+	zanrKirjeldus TEXT)
+INSERT INTO zanr (zanrNimi, zanrKirjeldus)
+VALUES ('komöödia', 'naeruväärne'), ('perekonna', 'väga ilus'), ('õudus', 'väga hirmutav'), ('Ilukirjandus', 'Põnev'), ('Cartoon', 'Põnev')
+SELECT * FROM zanr
+
+
+
+
+---Tabeli loomine filmType.
+CREATE TABLE filmType(
+	filmTypeId int Primary Key identity(1,1),
 	filmType varchar(25),
-	kirjeldus TEXT);
+	kirjeldus TEXT)
+INSERT INTO filmType (filmType, kirjeldus)
+VALUES ('3D', 'väga põnev 3D efekt'), ('2D', 'väSga põnev 2D efekt'), ('1D', 'väga põnev 1D efekt'), ('4D', 'väga põnev 4D efekt'), ('5D', 'väga põnev 5D efekt')
+SELECT * FROM filmType
 
-	Select * from filmType;
-	Insert into filmTYPE (filmTYPE, kirjeldus)
-	Values ('4D', 'väga põnev 4D, kasuta prillid');
 
-	-- table Rezisor --edit..
-	create table Rezisor(
-	rezisorID int Primary Key identity (1,1),
+
+
+---Tabeli loomine rezisor.
+CREATE TABLE rezisor(
+	resizorId int Primary Key identity(1,1),
 	eesnimi varchar(25),
-	perenimi varchar(25));
-
-	Select * from Rezisor;
-	Insert into Rezisor (rezisorID, eesnimi, perenimi)
-	Values ('1', 'Mike', 'Jackson');
-
-
-	--table film
-	Create TABLE film(
-	filmID int Primary Key identity (1,1),
-	filmNimetus varchar(25),
-	zanrID int,
-	pikkus int,
-	rezisorID int,
-	filmTypeID int,
-	reklaam image);
-	Select * from film;
-	
+	perenimi varchar(25))
+INSERT INTO rezisor (eesnimi, perenimi)
+VALUES ('Artemi', 'Mihhalenkov'), ('Nikita', 'Konjajev'), ('Georgi', 'Kadurin'), ('Stas', 'Tsugunov')
+SELECT * FROM rezisor
 
 
 
 
 
-
-	--table zanr
-	Create TABLE zanr(
-	zanrId int Primary Key identity (1,1),
-	zanrnimi varchar(25),
-	zanrkirjeldus TEXT);
-
-	select * from zanr;
-
-	--table piletiMyyk
-	Create TABLE piletiMyyk(
-	piletiMyykId int Primary Key identity (1,1),
+---Tabeli loomine piletiMyyk.
+CREATE TABLE piletiMyyk(
+	piletiMyykId int Primary Key identity(1,1),
 	kogus int,
-	kinoKavaId int,
-	);
+	kinokavaId int)
+INSERT INTO piletiMyyk (kogus, kinokavaId)
+VALUES (11, 3)
+SELECT * FROM piletiMyyk
 
-	select * from piletiMyyk
 
-	--tabel kinokava
-	Create TABLE kinokava(
-	kinokavaId int Primary Key identity (1,1),
+
+
+---Tabeli loomine kinokava.
+CREATE TABLE kinokava(
+	kinokavaId int Primary Key identity(1,1),
 	kuupaev DATETIME,
-	filmNimetus int
-	piletihind int,
-	);
-	
-	select * from kinokava
-	
-	
+	filmNimetus int,
+	piletihind int)
+INSERT INTO kinokava (kuupaev, filmNimetus, piletihind)
+VALUES ('12.04.24',  4, 12)
+SELECT * FROM kinokava
 
 
-
-	--FKs
-	--FK: film->filmType done
-
-	Select * from film;
-	Select * from filmType;
-	Alter table film add foreign key (filmTypeId) references filmType(filmTypeID);
-
-	--FK: piletiMyyk-->kinokavaId done 
-	Alter table piletiMyyk add foreign key (kinokavaId) references kinokava(kinokavaId);
-	Select * from piletiMyyk;
-	Select * from kinokava;
-	
-	
-
-	--FK: rezisor-->film done
-	Alter table film  add foreign key (rezisorID) references Rezisor(rezisorID);
-	select * from Rezisor;
-	select * from film;
-
-	--FK: zanr-->film done
-	Alter table film add foreign key (zanrId) references zanr(zanrId);
-	select * from zanr;
-	select * from film;
-
-	--FK:  kinokava-->film --
-	Alter table kinokava add foreign key (filmNimetus) references film(filmNimetus);
-	select * from kinokava;
-	select * from film;
+---Tabeli loomine film.
+CREATE TABLE film(
+	filmId int Primary Key identity(1,1),
+	filmNimetus varchar(25),
+	zanrId int,
+	pikkus int,
+	rezisorId int,
+	filmTypeId int,
+	reklaam image)
+INSERT INTO film (filmNimetus, pikkus, zanrId, rezisorId, filmTypeId)
+VALUES ('Isa ja Ema', 12, 1, 1, 5)
+SELECT * FROM film
 
 
-	
+---FK: film-->filmType
+ALTER TABLE film ADD FOREIGN KEY (filmTypeId) REFERENCES filmType(filmTypeId);
 
+---FK: film-->rezisorId
+ALTER TABLE film ADD FOREIGN KEY (rezisorId) REFERENCES rezisor(resizorId);
+
+---FK: film-->zanrId
+ALTER TABLE film ADD FOREIGN KEY (zanrId) REFERENCES zanr(zanrId);
+
+
+---FK: kinokava-->filmId
+ALTER TABLE kinokava ADD FOREIGN KEY (filmNimetus) REFERENCES film(filmId);
+
+---FK: piletiMyyk-->kinokavaId
+ALTER TABLE piletiMyyk ADD FOREIGN KEY (kinokavaId) REFERENCES kinokava(kinokavaId);
