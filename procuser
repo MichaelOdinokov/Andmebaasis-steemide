@@ -62,3 +62,13 @@ insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Cry of the B
 insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('When a Stranger Calls', 252, 'Byran Decker', 1992);
 
 select * from film;
+
+--filmiNimetus otsing esimese tähe järgi
+create procedure otsing1Taht
+@taht char(1)
+AS
+Begin
+	Select * from film
+	where filmNimetus like CONCAT(@taht, '%');
+
+END;
