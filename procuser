@@ -72,3 +72,6 @@ Begin
 	where filmNimetus like CONCAT(@taht, '%');
 
 END;
+
+--kävitimine
+Exec otsing1Taht 'A';
