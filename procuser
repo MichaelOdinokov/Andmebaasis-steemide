@@ -75,3 +75,14 @@ END;
 
 --kävitimine
 Exec otsing1Taht 'A';
+
+create procedure kustutsFilm
+@id int
+AS
+Begin
+	Select * from film;
+	delete from film where filmId=@id;
+	Select * from film;
+End;
+
+exec kustutsFilm 42;
