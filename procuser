@@ -1,1 +1,64 @@
+CREATE database OdinokovProcedure1;
+USE OdinokovProcedure;
 
+create table film(
+filmId int primary key identity(1,1),
+filmNimetus varchar(50),
+kestvus int,
+rezisoor varchar(50),
+v_aasta int);
+select * from film;
+--mockaroo.com
+
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Charlie Chan Carries On', 237, 'Gasparo Larcombe', 2010);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('House of Angels (Änglagård)', 171, 'Amalea MacGahey', 2002);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Conspirators of Pleasure (Spiklenci slasti)', 151, 'Cecil Rickardes', 2007);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Salting the Battlefield', 144, 'Kalindi Dagon', 1998);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Once Upon a Crime...', 164, 'Brooke Osman', 1994);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Gridlock''d', 297, 'Caro McGown', 2011);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Dancing Masters, The', 256, 'Pattie Matiashvili', 1997);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Au Hasard Balthazar', 227, 'Danyelle Saffle', 2012);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Grizzly Man', 113, 'Phillie Alesbrook', 1989);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Delta Farce', 247, 'Cassi Joselovitch', 2006);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Behind the Burly Q: The Story of Burlesque in America', 150, 'Leta Skahill', 1993);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Diebuster "Top wo Narae 2"', 298, 'Fredra Moncreif', 1992);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('B-Side', 116, 'Rockwell Colthurst', 1997);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Taking of Pelham One Two Three, The', 134, 'Kristoffer Catherick', 2007);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Last Seven, The', 293, 'Benn Heyfield', 1997);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Ghost in the Shell (Kôkaku kidôtai)', 101, 'Eward Grunwall', 2005);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Ministry of Fear', 255, 'Nicholle Eede', 2010);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Country Strong', 101, 'Valentino Startin', 2006);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Battle Beyond the Stars', 268, 'Zebadiah Cosbee', 2005);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Shakes the Clown', 119, 'Phebe Waitland', 2010);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Enchanted', 183, 'Hurley Savaage', 1992);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Tür, Die (Door, The)', 106, 'Any Agglio', 2006);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Sintel', 129, 'Issiah Merrin', 2005);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Mr. Sardonicus', 207, 'Johna Coleyshaw', 2008);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Fiend with the Electronic Brain (Blood of Ghastly Horror)', 113, 'Ikey Gration', 1995);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Three Quarter Moon', 119, 'Selina Corington', 2005);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('American Samurai (Ninja: American Samurai)', 268, 'Jana Fullalove', 1994);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Far Country, The', 151, 'Jennine Gobeaux', 2010);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Frank and Ollie', 162, 'Felipa Dockerty', 2012);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Donovan''s Echo', 290, 'Jaime Gadman', 2006);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Drummer-Crab (Le Crabe-Tambour)', 222, 'Aurora Cownden', 2006);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Reindeer Games', 177, 'Blair Pinching', 2005);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('We''ll Never Have Paris', 141, 'Brenna Stitle', 1994);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Small Town Murder Songs', 153, 'Trever Fogden', 2000);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Illuminata', 207, 'Syd Tommen', 1984);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Heaven''s Gate', 255, 'Ragnar Hulls', 1997);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('See This Movie', 100, 'Alvin Sotheron', 1992);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Amira & Sam', 300, 'Otis Swadlin', 2009);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Beauty and the Bastard (Tyttö sinä olet tähti)', 300, 'Alvira Clissold', 1998);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Train of Shadows (Tren de sombras)', 110, 'Pammy Winstanley', 2011);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Séraphine', 116, 'Andi Tedman', 2013);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Visitor to a Museum (Posetitel muzeya)', 260, 'Tate Hillhouse', 2010);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Trials of Oscar Wilde, The', 137, 'Cher de Marco', 2003);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('United', 267, 'Hendrik Ciementini', 1989);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('B*A*P*S', 250, 'Pam Brehat', 2004);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Walking with Prehistoric Beasts', 264, 'Avie Gethin', 1984);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Shakespeare High', 197, 'Hazlett Mandrake', 2007);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Strange Invaders', 226, 'Lamond Presdee', 2001);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('Cry of the Banshee', 182, 'Tome Darque', 2002);
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) values ('When a Stranger Calls', 252, 'Byran Decker', 1992);
+
+select * from film;
