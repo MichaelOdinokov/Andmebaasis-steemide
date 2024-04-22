@@ -31,7 +31,7 @@ CREATE TABLE rezisor(
 	eesnimi varchar(25),
 	perenimi varchar(25))
 INSERT INTO rezisor (eesnimi, perenimi)
-VALUES ('Artemi', 'Mihhalenkov'), ('Nikita', 'Konjajev'), ('Georgi', 'Kadurin'), ('Stas', 'Tsugunov')
+VALUES ('Michael', 'Odinokov'), ('Nikita', 'Konjajev'), ('Georgi', 'Kadurin'), ('Stas', 'Tsugunov')
 SELECT * FROM rezisor
 
 
@@ -71,14 +71,14 @@ CREATE TABLE film(
 	filmTypeId int,
 	reklaam image)
 INSERT INTO film (filmNimetus, pikkus, zanrId, rezisorId, filmTypeId)
-VALUES ('Isa ja Ema', 12, 1, 1, 5)
+VALUES ('Kivi', 12, 1, 1, 5)
 SELECT * FROM film
 
 
 ---FK: film-->filmType
 ALTER TABLE film ADD FOREIGN KEY (filmTypeId) REFERENCES filmType(filmTypeId);
 
----FK: film-->rezisorId
+---FK: film-->rezisorId no working
 ALTER TABLE film ADD FOREIGN KEY (rezisorId) REFERENCES rezisor(resizorId);
 
 ---FK: film-->zanrId
