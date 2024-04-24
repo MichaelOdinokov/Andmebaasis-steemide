@@ -61,3 +61,11 @@ CREATE PROCEDURE `otsing1Taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL
 	SELECT * FROM film
 	WHERE filmNimetus LIKE CONCAT(taht,'%');
 End;
+
+CALL otsing1Taht ('A'); 
+
+CREATE PROCEDURE `kustutaFilm`(IN `id` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+	Begin 
+	
+	Select * from film; delete from film where filmId=id; Select * from film; 
+End; 
