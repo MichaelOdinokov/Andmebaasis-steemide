@@ -77,3 +77,10 @@ CREATE PROCEDURE `filmide Arv`() NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEF
 BEGIN 
 	Select COUNT(*) as 'filmide Arv' from film; 
 END 
+
+--proceduur mis täidab tabeli film
+begin
+insert into film (filmNimetus, kestvus, rezisoor, v_aasta) 
+values (uusfilm,kestvuss ,rezisoor , aasta);
+select * from film;
+end;
