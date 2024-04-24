@@ -84,3 +84,5 @@ insert into film (filmNimetus, kestvus, rezisoor, v_aasta)
 values (uusfilm,kestvuss ,rezisoor , aasta);
 select * from film;
 end;
+
+SET @p0='Kivi'; SET @p1='Kevin Shmidt'; CALL `uuendaRezisoor`(@p0, @p1); 
