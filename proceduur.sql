@@ -66,6 +66,14 @@ CALL otsing1Taht ('A');
 
 CREATE PROCEDURE `kustutaFilm`(IN `id` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
 	Begin 
+
 	
 	Select * from film; delete from film where filmId=id; Select * from film; 
 End; 
+
+-- call kustutaFilm (15); ei tööta
+
+CREATE PROCEDURE `filmide Arv`() NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+BEGIN 
+	Select COUNT(*) as 'filmide Arv' from film; 
+END 
