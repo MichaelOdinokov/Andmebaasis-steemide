@@ -1,0 +1,35 @@
+create database KliendiAndmed;
+use  KliendiAndmed;
+
+CREATE TABLE Kliendid (
+    ID INT PRIMARY KEY,
+    Eesnimi VARCHAR(50),
+    Perenimi VARCHAR(50),
+    Email VARCHAR(100),
+    Telefoninumber VARCHAR(20)
+);
+select * from Kliendid
+
+GRANT SELECT, INSERT, ALTER ON Kliendid TO kasutaja;
+
+INSERT INTO Kliendid (ID, Eesnimi, Perenimi, Email, Telefoninumber) 
+VALUES (1, 'John', 'Doe', 'john.doe@example.com', '123456789');
+
+
+
+
+
+--kasutaja 
+INSERT INTO Kliendid (ID, Eesnimi, Perenimi, Email, Telefoninumber) 
+VALUES (2, 'Pavel', 'Shmidt', 'pavel.doe@ee.com', '123456789');
+select * from Kliendid
+
+ALTER TABLE Kliendid
+ADD Uus_veerg VARCHAR(50);
+
+UPDATE Kliendid
+SET Email = 'new_email@pavel.doe@ee.com', Telefoninumber = '3212351'
+WHERE ID = 2;
+
+
+
