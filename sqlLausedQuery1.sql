@@ -83,12 +83,13 @@ update Person
 set Age = 149
 where Id = 8
 
---?
+--Kui vanus on alla nulli või üle 150 aasta, siis neid noori ei registreerita
+-- Nii,ma kontrollisin, kas ta näeb tabelis 120-aastaselt
 alter table Person
 add constraint CK_Person_Age check (Age > 0 and Age < 150)
 
 insert into Person (Id, Name, Email, GenderId, Age)
-values (9, 'Test', 'Test', 2, 160)
+values (9, 'Test', 'Test', 2, 120)
 
 --?
 select * from Person
