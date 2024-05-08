@@ -129,7 +129,7 @@ select * from Person where Email like '_@_.com'
 
 --Vali inimesed nime järgi nende nimest 5 tähega
 select * from Person where Name like '[^WAS]%'
---- ?
+--- Tabel näitab alla 40-aastaseid ja 40-aastaseid inimesi
 select * from Person where (City = 'Gotham' or City = 'New York')
 and Age >= 40
 
