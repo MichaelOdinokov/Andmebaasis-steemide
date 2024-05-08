@@ -220,7 +220,7 @@ select distinct Name, DepartmentId from Employees
 
 ---valib töötaja töötasu summeeritud palka
 select sum(cast(Salary as int)) from Employees
----?
+---valib töötaja töötasu minimaalne palka
 select min(cast(Salary as int)) from Employees
 
 
