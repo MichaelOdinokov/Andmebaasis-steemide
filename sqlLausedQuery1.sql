@@ -218,7 +218,7 @@ select * from Employees
 --- valib ainulaadsed väärtused alates DepartamentId ja töötajad
 select distinct Name, DepartmentId from Employees
 
----?
+---valib töötaja töötasu summeeritud palka
 select sum(cast(Salary as int)) from Employees
 ---?
 select min(cast(Salary as int)) from Employees
