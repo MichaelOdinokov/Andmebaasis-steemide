@@ -9,7 +9,7 @@ create database LOGITpv22
 use LOGITpv22;
 
 
--- tabeli loomine
+-- tabelid loomine, gender ja person
 create table Gender
 (
 Id int NOT NULL primary key,
