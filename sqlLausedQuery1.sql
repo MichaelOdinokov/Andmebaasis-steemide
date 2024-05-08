@@ -30,9 +30,9 @@ values (1, 'Female')
 insert into Gender (Id, Gender)
 values (2, 'Male')
 
---- ?
+--- luua seos tabelite vahel ja võõrvõtme loomine
 alter table Person add constraint tblPerson_GenderId_FK
-foreign key (GenderId) references Gender(Id)
+Alter table Person add foreign key (GenderId) references Gender(Id)
 
 -- sisestame andmed
 insert into Person (Id, Name, Email, GenderId)
