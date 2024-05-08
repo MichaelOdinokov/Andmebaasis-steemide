@@ -358,7 +358,7 @@ as begin
 	return (select Name from Employees where Id = @Id)
 end
 
--- ?
+-- Kirjutame nime ja saame tema isikut tõendava dokumendi
 declare @EmployeeName nvarchar(50)
 exec @EmployeeName = spGetNameById2 1
 print 'Name of the employee = ' + @EmployeeName
