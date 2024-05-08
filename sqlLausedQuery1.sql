@@ -227,13 +227,16 @@ select min(cast(Salary as int)) from Employees
 alter table Employees
 add City nvarchar(25)
 
+--alter table Person add constraint tblPerson_GenderId_FK
+--Alter table Person add foreign key (GenderId) references Gender(Id)
+
 
 alter table Employees
 add DepartmentId
 int null
 
 
---?
+--Uue välja lisamine
 alter table Employees
 add MiddleName nvarchar(30)
 
