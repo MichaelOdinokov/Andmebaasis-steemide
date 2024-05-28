@@ -1,0 +1,26 @@
+create database opilaneOdinokov;
+use opilaneOdinokov;
+
+Create table Isik(
+id integer,
+eesnimi varchar(50),
+perenimi varchar(50) not null,
+sugu char(1),
+sünnikupäev date,
+address varchar(100),
+email varchar(50)
+);
+
+Create table Õppeaine(
+id integer,
+nimi varchar(100),
+vastutav_õpetaja integer,
+aine_kestus varchar(50)
+);
+
+Create table Õppimine(
+id integer,
+isiku_id integer,
+õppeaine_id integer,
+hinne integer,
+);
