@@ -16,9 +16,10 @@ CREATE TABLE Isik (
 CREATE TABLE Õppeaine (
     id int PRIMARY KEY,
     nimetus VARCHAR(50),
-    vastutav_õpetaja VARCHAR(50),
+    vastutav_õpetaja integer,
     aine_kestus VARCHAR(50)
 );
+drop  table   Õppeaine
 
 -- Table Õppimine
 CREATE TABLE Õppimine (
@@ -64,3 +65,38 @@ BEGIN
            CONCAT('Õppimine on lisatud: IsikID: ', inserted.isik_id, ', ÕppeaineID: ', inserted.õppeaine_id, ', Hinne: ', inserted.hinne)
     FROM inserted;
 END;
+
+
+--kasutaja ei saa tabeli struuktur muuta nuing andmed tabelist kustudtad
+DENY INSERT ON Isik  TO opilaneMichael;
+DENY DELETE ON Isik TO opilaneMichael;
+DENY INSERT ON logi TO opilaneMichael;
+DENY DELETE ON  logi TO opilaneMichael;
+DENY INSERT ON Õppeaine  TO opilaneMichael;
+DENY DELETE ON Õppeaine TO opilaneMichael;
+
+
+
+
+INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
+VALUES ('Kati', 'Kask', 'N', '1988-02-10', 'Tartu, Eesti', 'kati.kask@example.com');
+
+INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
+VALUES ('Mihkel', 'Mets', 'M', '1992-09-25', 'Viljandi, Eesti', 'mihkel.mets@example.com');
+
+INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
+VALUES ('Laura', 'Lepp', 'N', '1995-07-18', 'Rakvere, Eesti', 'laura.lepp@example.com');
+
+
+Select * from Isik
+Select * from Õppeaine
+Select * from Õppimine
+
+--foreign key Õppimine --> Isik
+ALTER TABLE Õppimine ADD FOREIGN KEY (isik_id) REFERENCES Isik(id);
+
+--foreign key Õppimine --> Õppeaine
+ALTER TABLE Õppimine ADD FOREIGN KEY (õppeaine_id) REFERENCES Õppeaine(id);
+
+--foreign key Õppeaine--> Isik
+ALTER TABLE Õppeaine ADD FOREIGN KEY (vastutav_õpetaja) REFERENCES Isik(id);
