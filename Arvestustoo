@@ -1,35 +1,66 @@
 CREATE DATABASE opilaneOdinokov;
 USE opilaneOdinokov;
 
--- loomine table
+-- Table Isik
 CREATE TABLE Isik (
-    id INT PRIMARY KEY,
+    id int PRIMARY KEY,
     eesnimi VARCHAR(50),
     perenimi VARCHAR(50),
     sugu CHAR(1),
-    synnikuupaev DATE,
+    sünnikuupäev DATE,
     aadress VARCHAR(100),
     email VARCHAR(50)
 );
 
-CREATE TABLE Oppimine (
-    id INT PRIMARY KEY,
-    isik_id INT,
-    opppeaine_id INT,
-    hinne INT,
-    FOREIGN KEY (isik_id) REFERENCES Isik(id)
+-- Table Õppeaine
+CREATE TABLE Õppeaine (
+    id int PRIMARY KEY,
+    nimetus VARCHAR(50),
+    vastutav_õpetaja VARCHAR(50),
+    aine_kestus VARCHAR(50)
 );
 
-CREATE TABLE Opppeaine (
-    id INT PRIMARY KEY,
-    vastutav_opeataja INT,
-    opppeaine_info VARCHAR(50)
+-- Table Õppimine
+CREATE TABLE Õppimine (
+    id int PRIMARY KEY,
+    isik_id INTEGER REFERENCES Isik(id),
+    õppeaine_id INTEGER REFERENCES Õppeaine(id),
+    hinne INTEGER
 );
-
 --logi table
-CREATE TABLE Logi (
-    id INT PRIMARY KEY,
-    kasutaja VARCHAR(50),
-    kuupaev DATE,
-    sisestatudAndmed TEXT
+CREATE TABLE logi (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    kasutaja NVARCHAR(50),
+    kuupäev DATETIME DEFAULT GETDATE(),
+    sisestatudAndmed NVARCHAR(MAX)
 );
+
+
+--trigerid uuendaime ja lisamine
+--triger uuendamine
+CREATE TRIGGER ÕppimineUuendamine
+ON Õppimine
+FOR UPDATE
+AS
+BEGIN
+    INSERT INTO logi (kasutaja, kuupäev, sisestatudAndmed)
+    SELECT SYSTEM_USER,
+           GETDATE(),
+           CONCAT('Vanad: IsikID: ', deleted.isik_id, ', ÕppeaineID: ', deleted.õppeaine_id, ', Hinne: ', deleted.hinne, 
+                  ' Uued: IsikID: ', inserted.isik_id, ', ÕppeaineID: ', inserted.õppeaine_id, ', Hinne: ', inserted.hinne)
+    FROM deleted 
+    INNER JOIN inserted ON deleted.id = inserted.id;
+END;
+
+--trige lisamine
+CREATE TRIGGER ÕppimineLisamine
+ON Õppimine
+FOR INSERT
+AS
+BEGIN
+    INSERT INTO logi (kasutaja, kuupäev, sisestatudAndmed)
+    SELECT SYSTEM_USER,
+           GETDATE(),
+           CONCAT('Õppimine on lisatud: IsikID: ', inserted.isik_id, ', ÕppeaineID: ', inserted.õppeaine_id, ', Hinne: ', inserted.hinne)
+    FROM inserted;
+END;
