@@ -1,0 +1,27 @@
+CREATE DATABASE opilaneOdinokov;
+USE opilaneOdinokov;
+
+-- loomine table
+CREATE TABLE Isik (
+    id INT PRIMARY KEY,
+    eesnimi VARCHAR(50),
+    perenimi VARCHAR(50),
+    sugu CHAR(1),
+    synnikuupaev DATE,
+    aadress VARCHAR(100),
+    email VARCHAR(50)
+);
+
+CREATE TABLE Oppimine (
+    id INT PRIMARY KEY,
+    isik_id INT,
+    opppeaine_id INT,
+    hinne INT,
+    FOREIGN KEY (isik_id) REFERENCES Isik(id)
+);
+
+CREATE TABLE Opppeaine (
+    id INT PRIMARY KEY,
+    vastutav_opeataja INT,
+    opppeaine_info VARCHAR(50)
+);
