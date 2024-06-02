@@ -25,3 +25,11 @@ CREATE TABLE Opppeaine (
     vastutav_opeataja INT,
     opppeaine_info VARCHAR(50)
 );
+
+--logi table
+CREATE TABLE Logi (
+    id INT PRIMARY KEY,
+    kasutaja VARCHAR(50),
+    kuupaev DATE,
+    sisestatudAndmed TEXT
+);
