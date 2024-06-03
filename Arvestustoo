@@ -1,9 +1,10 @@
+-- Create the database
 CREATE DATABASE opilaneOdinokov;
 USE opilaneOdinokov;
 
--- Table Isik
+-- Create Table Isik
 CREATE TABLE Isik (
-    id int PRIMARY KEY,
+    id int PRIMARY KEY IDENTITY(1,1),
     eesnimi VARCHAR(50),
     perenimi VARCHAR(50),
     sugu CHAR(1),
@@ -12,23 +13,26 @@ CREATE TABLE Isik (
     email VARCHAR(50)
 );
 
--- Table Õppeaine
+-- Create Table Õppeaine
 CREATE TABLE Õppeaine (
-    id int PRIMARY KEY,
+    id int PRIMARY KEY IDENTITY(1,1),
     nimetus VARCHAR(50),
-    vastutav_õpetaja integer,
-    aine_kestus VARCHAR(50)
+    vastutav_õpetaja INTEGER,
+    aine_kestus VARCHAR(50),
+    FOREIGN KEY (vastutav_õpetaja) REFERENCES Isik(id)
 );
-drop  table   Õppeaine
 
--- Table Õppimine
+-- Create Table Õppimine
 CREATE TABLE Õppimine (
-    id int PRIMARY KEY,
-    isik_id INTEGER REFERENCES Isik(id),
-    õppeaine_id INTEGER REFERENCES Õppeaine(id),
-    hinne INTEGER
+    id int PRIMARY KEY IDENTITY(1,1),
+    isik_id INTEGER,
+    õppeaine_id INTEGER,
+    hinne INTEGER,
+    FOREIGN KEY (isik_id) REFERENCES Isik(id),
+    FOREIGN KEY (õppeaine_id) REFERENCES Õppeaine(id)
 );
---logi table
+
+-- Create Table logi
 CREATE TABLE logi (
     id INT IDENTITY(1,1) PRIMARY KEY,
     kasutaja NVARCHAR(50),
@@ -36,9 +40,7 @@ CREATE TABLE logi (
     sisestatudAndmed NVARCHAR(MAX)
 );
 
-
---trigerid uuendaime ja lisamine
---triger uuendamine
+-- Trigger for updating Õppimine
 CREATE TRIGGER ÕppimineUuendamine
 ON Õppimine
 FOR UPDATE
@@ -53,7 +55,7 @@ BEGIN
     INNER JOIN inserted ON deleted.id = inserted.id;
 END;
 
---trige lisamine
+-- Trigger for inserting into Õppimine
 CREATE TRIGGER ÕppimineLisamine
 ON Õppimine
 FOR INSERT
@@ -67,36 +69,41 @@ BEGIN
 END;
 
 
---kasutaja ei saa tabeli struuktur muuta nuing andmed tabelist kustudtad
-DENY INSERT ON Isik  TO opilaneMichael;
-DENY DELETE ON Isik TO opilaneMichael;
-DENY INSERT ON logi TO opilaneMichael;
-DENY DELETE ON  logi TO opilaneMichael;
-DENY INSERT ON Õppeaine  TO opilaneMichael;
-DENY DELETE ON Õppeaine TO opilaneMichael;
 
-
-
-
+-- Insert sample data into Isik
 INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
-VALUES ('Kati', 'Kask', 'N', '1988-02-10', 'Tartu, Eesti', 'kati.kask@example.com');
+VALUES 
+('Kati', 'Kask', 'N', '1988-02-10', 'Tartu, Eesti', 'kati.kask@example.com'),
+('Mihkel', 'Mets', 'M', '1992-09-25', 'Viljandi, Eesti', 'mihkel.mets@example.com'),
+('Laura', 'Lepp', 'N', '1995-07-18', 'Rakvere, Eesti', 'laura.lepp@example.com'),
+('Jaan', 'Tamm', 'M', '1990-11-05', 'Tallinn, Eesti', 'jaan.tamm@example.com'),
+('Liisa', 'Põld', 'N', '1985-03-22', 'Pärnu, Eesti', 'liisa.pold@example.com');
 
-INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
-VALUES ('Mihkel', 'Mets', 'M', '1992-09-25', 'Viljandi, Eesti', 'mihkel.mets@example.com');
+-- Insert sample data into Õppeaine
+INSERT INTO Õppeaine (nimetus, vastutav_õpetaja, aine_kestus) 
+VALUES 
+('Matemaatika', 1, '4 kuud'),
+('Füüsika', 2, '3 kuud'),
+('Keemia', 3, '3 kuud'),
+('Bioloogia', 4, '4 kuud'),
+('Ajalugu', 5, '2 kuud');
 
-INSERT INTO Isik (eesnimi, perenimi, sugu, sünnikuupäev, aadress, email) 
-VALUES ('Laura', 'Lepp', 'N', '1995-07-18', 'Rakvere, Eesti', 'laura.lepp@example.com');
+-- Insert sample data into Õppimine
+INSERT INTO Õppimine (isik_id, õppeaine_id, hinne) 
+VALUES 
+(1, 1, 5),
+(1, 2, 4),
+(2, 1, 3),
+(2, 3, 5),
+(3, 4, 2),
+(3, 5, 4),
+(4, 2, 3),
+(4, 3, 2),
+(5, 1, 5),
+(5, 4, 4);
 
-
-Select * from Isik
-Select * from Õppeaine
-Select * from Õppimine
-
---foreign key Õppimine --> Isik
-ALTER TABLE Õppimine ADD FOREIGN KEY (isik_id) REFERENCES Isik(id);
-
---foreign key Õppimine --> Õppeaine
-ALTER TABLE Õppimine ADD FOREIGN KEY (õppeaine_id) REFERENCES Õppeaine(id);
-
---foreign key Õppeaine--> Isik
-ALTER TABLE Õppeaine ADD FOREIGN KEY (vastutav_õpetaja) REFERENCES Isik(id);
+-- Select statements to verify the data
+SELECT * FROM Isik;
+SELECT * FROM Õppeaine;
+SELECT * FROM Õppimine;
+SELECT * FROM logi;
